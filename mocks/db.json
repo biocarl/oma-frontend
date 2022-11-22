@@ -1,0 +1,12 @@
+{
+  "categories": [
+    {"category":"java","count":169},
+    {"category":"uncategorized","count":68},
+    {"category":"sql","count":42},
+    {"category":"clojure","count":23},
+    {"category":"javascript","count":22},
+    {"category":"infosec","count":19},
+    {"category":"vuesjs","count":14}
+  ],
+  "health": { "status": "healthy" }
+}

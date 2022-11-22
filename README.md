@@ -10,6 +10,10 @@ This template should help get you started developing with Vue 3 in Vite.
 
 See [Vite Configuration Reference](https://vitejs.dev/config/).
 
+
+
+
+
 ## Project Setup
 
 ```sh
@@ -27,3 +31,12 @@ npm run dev
 ```sh
 npm run build
 ```
+
+
+### Spin up local mocks
+
+```sh
+json-server --watch mocks/db.json --routes mocks/routes.json
+```
+
+
