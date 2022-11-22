@@ -6,7 +6,11 @@
     {"category":"clojure","count":23},
     {"category":"javascript","count":22},
     {"category":"infosec","count":19},
-    {"category":"vuesjs","count":14}
+    {"category":"vuesjs","count":14},
+    {"category":"perl","count": 13},
+    {"category":"networking","count": 12},
+    {"category":"bash","count":10},
+    {"category":"python","count":3}
   ],
   "health": { "status": "healthy" }
 }
