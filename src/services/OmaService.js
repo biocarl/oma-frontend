@@ -4,7 +4,7 @@ import axios from "axios";
 class OmaService {
     getAll() {
         return axios.create({
-            baseURL: "http://localhost:3000/api",
+            baseURL: import.meta.env.VITE_OMA_URL +"/api",
             headers: {
                 "Content-type": "application/json"
             }
