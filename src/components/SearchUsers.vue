@@ -2,10 +2,10 @@
   <div class="container has-text-centered">
     <h1>Users</h1>
     <ul>
-      <li v-for="(user,index) in users" key="index"
-          @click="updateUserSelection(index)"
-          :class="{selected: index === currentSelection}">
-        {{user.user  }}<strong>{{"(" + user["til-count"] +")"}}</strong></li>
+      <li v-for="user in users" key="user.user"
+          @click="updateUserSelection(user.user)"
+          :class="{selected: this.isSelected(user.user)}">
+        {{user.user}}<strong>{{"(" + user["til-count"] +")"}}</strong></li>
     </ul>
   </div>
 </template>
@@ -15,7 +15,7 @@ import oma from "../services/OmaService";
 export default {
   data(){
     return {
-      currentSelection : -1,
+      selectedUsers : [],
       users: []
     }
   },
@@ -28,15 +28,18 @@ export default {
     });
   },
   methods: {
-    updateUserSelection(index){
-      if(index === this.currentSelection){
-        this.currentSelection = -1;
-        this.$emit('user-update',"");
+    isSelected(user){
+      return this.selectedUsers.includes(user);
+    },
+    updateUserSelection(user){
+      if(this.isSelected(user)){
+        this.selectedUsers = this.selectedUsers.filter(e => e !== user)
       }else{
-        this.currentSelection = index;
-        this.$emit('user-update',this.users[this.currentSelection].user);
+        this.selectedUsers.push(user);
       }
-    }
+      this.$emit('users-update',this.selectedUsers);
+    },
+
   }
 }
 </script>

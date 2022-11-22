@@ -4,8 +4,8 @@
     <ul>
       <li v-for="(category,index) in categories" key="index"
           @click="updateCategorySelection(index)"
-          :class="{selected: index === currentSelection}"
-          >{{category.category }}<strong>{{" (" + category.count +")" }}</strong></li>
+          :class="{selected: index === currentSelection}">
+        {{category.category}}<strong>{{" (" + category.count +")" }}</strong></li>
     </ul>
   </div>
 </template>
@@ -15,7 +15,7 @@ import oma from "../services/OmaService";
 export default {
   data(){
     return {
-      currentSelection : -1,
+      currentSelection: -1,
       categories: []
     }
   },
