@@ -1,6 +1,10 @@
 <template>
   <main>
-    <SearchCategories :categories="categories" />
+    <div class="container has-text-centered">
+    <h1>Search</h1>
+    <h3>Current: <strong>{{currentCategory}}</strong></h3>
+    </div>
+    <SearchCategories :categories="categories" @category-update="(category) => this.currentCategory = category" />
   </main>
 </template>
 
@@ -14,7 +18,8 @@ import oma from "../services/OmaService";
 export default {
   data() {
     return {
-      categories: this.fetchCategories()
+      categories: this.fetchCategories(),
+      currentCategory: "",
     }
   },
   methods: {

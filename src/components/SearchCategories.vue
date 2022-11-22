@@ -24,7 +24,13 @@ export default {
   },
   methods: {
     updateCategorySelection(index){
-      this.currentSelection = index;
+      if(index === this.currentSelection){
+        this.currentSelection = -1;
+        this.$emit('category-update',"");
+      }else{
+        this.currentSelection = index;
+        this.$emit('category-update',this.categories[this.currentSelection].category);
+      }
     }
   }
 }
