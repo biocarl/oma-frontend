@@ -11,16 +11,21 @@
 </template>
 
 <script>
+import oma from "../services/OmaService";
 export default {
-  props: {
-    categories: {
-      type: Array
-    }
-  },
   data(){
     return {
-      currentSelection : -1
+      currentSelection : -1,
+      categories: []
     }
+  },
+  created() {
+    oma.getAll()
+        .then(response => {
+          this.categories = response.data;
+        }).catch(e => {
+      console.log(e);
+    });
   },
   methods: {
     updateCategorySelection(index){
