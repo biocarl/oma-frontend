@@ -1,11 +1,14 @@
 <template>
   <main>
     <div class="container has-text-centered">
+    <hr style="border-top: 1px dashed;">
     <h1>Search</h1>
     <h3>Category: <strong>{{this.query.currentCategory}}</strong></h3>
     <h3>User: <strong>{{this.query.currentUsers.join(", ")}}</strong></h3>
     </div>
-    <SearchCategories @category-update="(category) => this.query.currentCategory = category" />
+    <SearchCategories
+        :queryParams={users:this.query.currentUsers}
+        @category-update="(category) => this.query.currentCategory = category" />
     <SearchUsers @users-update="(users) => this.query.currentUsers = users" />
   </main>
 </template>

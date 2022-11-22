@@ -13,6 +13,11 @@
 <script>
 import oma from "../services/OmaService";
 export default {
+  props:{
+    queryParams: {
+      type: Object
+    }
+  },
   data(){
     return {
       currentSelection: -1,
@@ -20,12 +25,7 @@ export default {
     }
   },
   created() {
-    oma.getCategories()
-        .then(response => {
-          this.categories = response.data;
-        }).catch(e => {
-      console.log(e);
-    });
+    this.fetchCategories();
   },
   methods: {
     updateCategorySelection(index){
@@ -35,6 +35,21 @@ export default {
       }else{
         this.currentSelection = index;
         this.$emit('category-update',this.categories[this.currentSelection].category);
+      }
+    },
+    fetchCategories(){
+      oma.getCategories(this.queryParams)
+          .then(response => {
+            this.categories = response.data;
+          }).catch(e => {
+        console.log(e);
+      });
+    }
+  },
+  watch:{
+    queryParams:{
+      handler: function (){
+        this.fetchCategories();
       }
     }
   }
@@ -47,13 +62,20 @@ h1 {
   font-size: 2.6rem;
   top: -10px;
 }
-ul li {
+
+ul li{
   display: inline;
-  margin-left: 20px;
+  padding: 0px 4px 0px 4px;
+  margin: 4px 4px 4px 4px;
   cursor: pointer;
   color: #2979ff;
   white-space: pre-wrap;
   word-wrap:break-word;
+
+  /*Selected style*/
+  border-radius: 7px;
+  border-color: transparent;
+  border-style: dashed;
 }
 
 ul li strong {
@@ -69,7 +91,6 @@ ul{
   padding: 1em 20em 1em 20em;
 }
 .selected{
-  font-weight: bold;
-  color: hotpink;
+  border-color: red;
 }
 </style>

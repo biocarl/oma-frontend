@@ -2,13 +2,13 @@ import axios from "axios";
 
 
 class OmaService {
-    getCategories() {
+    getCategories(queryParams) {
         return axios.create({
             baseURL: import.meta.env.VITE_OMA_URL +"/api",
             headers: {
                 "Content-type": "application/json"
             }
-        }).get("/categories//");
+        }).get("/categories/"+ ((queryParams.users.length) ? queryParams.users.join("-") :'/'));
     }
 
     getUsers() {

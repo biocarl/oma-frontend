@@ -52,11 +52,17 @@ h1 {
 }
 ul li{
   display: inline;
-  margin-left: 20px;
+  padding: 0px 4px 0px 4px;
+  margin: 4px 4px 4px 4px;
   cursor: pointer;
   color: #2979ff;
   white-space: pre-wrap;
   word-wrap:break-word;
+
+  /*Selected style*/
+  border-radius: 7px;
+  border-color: transparent;
+  border-style: dashed;
 }
 
 ul li strong {
@@ -72,7 +78,6 @@ ul{
   padding: 1em 20em 1em 20em;
 }
 .selected{
-  font-weight: bold;
-  color: hotpink;
+  border-color: red;
 }
 </style>
