@@ -1,11 +1,11 @@
 <template>
   <div class="container has-text-centered">
-    <h1>Categories</h1>
+    <h1>Users</h1>
     <ul>
-      <li v-for="(category,index) in categories" key="index"
-          @click="updateCategorySelection(index)"
-          :class="{selected: index === currentSelection}"
-          >{{category.category }}<strong>{{" (" + category.count +")" }}</strong></li>
+      <li v-for="(user,index) in users" key="index"
+          @click="updateUserSelection(index)"
+          :class="{selected: index === currentSelection}">
+        {{user.user  }}<strong>{{"(" + user["til-count"] +")"}}</strong></li>
     </ul>
   </div>
 </template>
@@ -16,25 +16,25 @@ export default {
   data(){
     return {
       currentSelection : -1,
-      categories: []
+      users: []
     }
   },
   created() {
-    oma.getCategories()
+    oma.getUsers()
         .then(response => {
-          this.categories = response.data;
+          this.users = response.data;
         }).catch(e => {
       console.log(e);
     });
   },
   methods: {
-    updateCategorySelection(index){
+    updateUserSelection(index){
       if(index === this.currentSelection){
         this.currentSelection = -1;
-        this.$emit('category-update',"");
+        this.$emit('user-update',"");
       }else{
         this.currentSelection = index;
-        this.$emit('category-update',this.categories[this.currentSelection].category);
+        this.$emit('user-update',this.users[this.currentSelection].user);
       }
     }
   }
@@ -47,7 +47,7 @@ h1 {
   font-size: 2.6rem;
   top: -10px;
 }
-ul li {
+ul li{
   display: inline;
   margin-left: 20px;
   cursor: pointer;

@@ -12,5 +12,16 @@
     {"category":"bash","count":10},
     {"category":"python","count":3}
   ],
+  "users" : [
+    {"user":"DiesDasJenes","til-count":3,"error-count":0},
+    {"user":"Kokonut133","til-count":11,"error-count":2},
+    {"user":"MartinReiss","til-count":3,"error-count":0},
+    {"user":"biocarl","til-count":563,"error-count":0},
+    {"user":"danielSbastos","til-count":1,"error-count":0},
+    {"user":"maryarm","til-count":37,"error-count":0},
+    {"user":"sroidl","til-count":0,"error-count":1},
+    {"user":"tmateen","til-count":0,"error-count":0},
+    {"user":"zzzz","til-count":2,"error-count":0}
+  ],
   "health": { "status": "healthy" }
 }
