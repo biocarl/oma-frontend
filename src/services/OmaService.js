@@ -1,6 +1,7 @@
 import axios from "axios";
 
 
+
 class OmaService {
     getCategories(queryParams) {
         return axios.create({
@@ -8,16 +9,24 @@ class OmaService {
             headers: {
                 "Content-type": "application/json"
             }
-        }).get("/categories/"+ ((queryParams.users.length) ? queryParams.users.join("-") :'/'));
+        }).get("/categories/"+ this.#determineUserRoute(queryParams.users) + this.#determineDateRangeParams(queryParams.dateRange));
     }
 
-    getUsers() {
+    #determineUserRoute(users) {
+        return (users.length) ? users.join("-") :'/';
+    }
+
+    #determineDateRangeParams(dateRange) {
+        return '?start-date='+dateRange.startDate+'&end-date='+dateRange.endDate;
+    }
+
+    getUsers(queryParams) {
         return axios.create({
             baseURL: import.meta.env.VITE_OMA_URL +"/api",
             headers: {
                 "Content-type": "application/json"
             }
-        }).get("/statistics/users");
+        }).get("/statistics/users"+this.#determineDateRangeParams(queryParams.dateRange));
     }
 }
 

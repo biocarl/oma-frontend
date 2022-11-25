@@ -1,4 +1,4 @@
 {
-  "/api/categories//": "/categories",
+  "/api/categories//*": "/categories",
   "/api/categories/*": "/categories?q=java"
 }

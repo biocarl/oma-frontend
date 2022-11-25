@@ -13,6 +13,11 @@
 <script>
 import oma from "../services/OmaService";
 export default {
+  props:{
+    queryParams: {
+      type: Object
+    }
+  },
   data(){
     return {
       selectedUsers : [],
@@ -20,12 +25,7 @@ export default {
     }
   },
   created() {
-    oma.getUsers()
-        .then(response => {
-          this.users = response.data;
-        }).catch(e => {
-      console.log(e);
-    });
+    this.fetchUsers();
   },
   methods: {
     isSelected(user){
@@ -39,7 +39,21 @@ export default {
       }
       this.$emit('users-update',this.selectedUsers);
     },
-
+    fetchUsers(){
+      oma.getUsers(this.queryParams)
+          .then(response => {
+            this.users = response.data;
+          }).catch(e => {
+        console.log(e);
+      });
+    }
+  },
+  watch:{
+    queryParams:{
+      handler: function (){
+        this.fetchUsers();
+      }
+    }
   }
 }
 </script>

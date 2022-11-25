@@ -8,9 +8,11 @@
     <h3>DateRange: <strong>{{this.query.currentDateRange}}</strong></h3>
     </div>
     <SearchCategories
-        :queryParams={users:this.query.currentUsers}
+        :queryParams="{users:this.query.currentUsers, dateRange: this.query.currentDateRange}"
         @category-update="(category) => this.query.currentCategory = category" />
-    <SearchUsers @users-update="(users) => this.query.currentUsers = users" />
+    <SearchUsers
+        :queryParams="{dateRange: this.query.currentDateRange}"
+        @users-update="(users) => this.query.currentUsers = users" />
     <SearchDate @date-update="(dateRange) => this.query.currentDateRange = dateRange" />
   </main>
 </template>
