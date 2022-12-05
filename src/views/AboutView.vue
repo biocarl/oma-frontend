@@ -5,7 +5,7 @@ import SearchResult from '../components/SearchResult.vue'
 
 
 <template>
-  <SearchResult query="someQuery"></SearchResult>
+  <h1>Hello!!</h1>
 </template>
 
 <style>

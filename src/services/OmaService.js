@@ -1,6 +1,6 @@
 import axios from "axios";
 
-
+import {queryParamsToString} from "./helpers.js";
 
 class OmaService {
     getCategories(queryParams) {
@@ -9,7 +9,20 @@ class OmaService {
             headers: {
                 "Content-type": "application/json"
             }
-        }).get("/categories/"+ this.#determineUserRoute(queryParams.users) + this.#determineDateRangeParams(queryParams.dateRange));
+        }).get("/categories/"+ this.#determineUserRoute(queryParams.users) + this.#determineDateRangeParams(queryParams));
+    }
+
+    getTils(queryParams) {
+        return axios.create({
+            baseURL: import.meta.env.VITE_OMA_URL +"/api",
+            headers: {
+                "Content-type": "application/json"
+            }
+        }).get("/tils" + queryParamsToString(queryParams));
+    }
+
+    #queryParamsToString(queryParams) {
+        return '?'
     }
 
     #determineUserRoute(users) {
@@ -17,7 +30,7 @@ class OmaService {
     }
 
     #determineDateRangeParams(dateRange) {
-        return '?start-date='+dateRange.startDate+'&end-date='+dateRange.endDate;
+        return '?start-date='+dateRange["start-date"]+'&end-date='+dateRange["end-date"];
     }
 
     getUsers(queryParams) {
@@ -26,7 +39,7 @@ class OmaService {
             headers: {
                 "Content-type": "application/json"
             }
-        }).get("/statistics/users"+this.#determineDateRangeParams(queryParams.dateRange));
+        }).get("/statistics/users"+this.#determineDateRangeParams(queryParams));
     }
 }
 
