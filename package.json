@@ -1,6 +1,6 @@
 {
   "name": "oma-frontend",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "type":"module",
   "scripts": {
     "dev": "vite & json-server --watch mocks/db.json --routes mocks/routes.json",
