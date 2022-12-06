@@ -1,22 +1,20 @@
 <template>
   <main>
     <div class="container has-text-centered">
-    <hr style="border-top: 1px dashed;">
     </div>
     <article class="panel is-link p-6">
-      <p class="panel-heading">
-        Search
-      </p>
-
+<!--      <p class="panel-heading">-->
+<!--        Search-->
+<!--      </p>-->
       <p class="panel-tabs">
-        <a class="is-active">All</a>
-        <a>Categories</a>
+        <a>All</a>
+        <a class="is-active">Categories</a>
         <a>Plaintext</a>
         <a>Commands</a>
       </p>
       <div class="panel-block">
         <p class="control has-icons-left">
-          <input class="input is-link" type="text" placeholder="Search">
+          <input class="input is-link" type="text" placeholder="Search" v-model="this.query.category">
           <span class="icon is-left">
         <i class="fas fa-search" aria-hidden="true"></i>
       </span>
@@ -24,19 +22,13 @@
       </div>
 
       <ul>
-        <li>
           <SearchCategories
               :queryParams="this.query"
               @category-update="(category) => this.query.category = category" />
-        </li>
-        <li>
           <SearchUsers
               :queryParams="this.query"
               @users-update="(users) => this.query.users = users" />
-        </li>
-        <li>
           <SearchDate @date-update="({startDate, endDate}) => this.query = {...this.query, 'start-date' : startDate,'end-date': endDate}" />
-        </li>
       </ul>
       <SearchResult :queryParams="this.query" :tils="this.tils" ></SearchResult>
     </article>
@@ -78,3 +70,29 @@ export default {
   }
 }
 </script>
+<style>
+ul li{
+  display: inline;
+  padding: 0px 4px 0px 4px;
+  margin: 4px 4px 4px 4px;
+  cursor: pointer;
+  color: #2979ff;
+  white-space: pre-wrap;
+  word-wrap:break-word;
+
+  /*Selected style*/
+  border-radius: 7px;
+  border-color: transparent;
+  border-style: dashed;
+}
+
+ul{
+  list-style-type: disc;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  padding: 1em 20em 1em 20em;
+}
+
+</style>

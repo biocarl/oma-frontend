@@ -6,16 +6,27 @@ import { RouterLink, RouterView } from 'vue-router'
   <header>
     <section class="section">
       <div class="container has-text-centered">
-        <h1 class="title ">OMA</h1>
-        <p class="subtitle">
-          <strong>O</strong>pen <strong>M</strong>emory <strong>A</strong>rchive
-        </p>
-        <img alt="Oma logo" class="image is-128x128 is-inline-block" src="@/assets/oma.png"/>
-        <br>
-        <RouterLink to="/">Back Home</RouterLink>
-        <RouterLink to="/search-result">About</RouterLink>
+        <container>
+          <img width="300" height="300" alt="Oma logo" src="@/assets/oma.png"/>
+        </container>
+        <div style="font-weight: bold; font-size: 2em;margin-left: 2em;font-family: 'Latin Modern Roman', serif">
+          <span>O</span>
+          <span style="font-size: 0.5em; color: #c5cae9">pen</span>
+          <span>M</span>
+          <span style="font-size: 0.5em; color: #c5cae9">emory</span>
+          <span>A</span>
+           <span style="font-size: 0.5em; color: #c5cae9">rchive</span>
+        </div>
+<!--        <RouterLink to="/">Back Home</RouterLink>-->
+<!--        <RouterLink to="/search-result">About</RouterLink>-->
       </div>
     </section>
   </header>
   <RouterView />
 </template>
+<style>
+.section{
+  padding-bottom: 1em !important;
+}
+
+</style>

@@ -1,13 +1,9 @@
 <template>
-  <div class="container has-text-centered">
-    <h1>Dates</h1>
-    <ul>
+  <li class="li-type"><strong>Time Range</strong></li>
       <li v-for="(date,index) in startDates" key="index"
           @click="updateDateSelection(index)"
           :class="{selected: index === currentSelection}">
         {{date.name}}</li>
-    </ul>
-  </div>
 </template>
 
 <script>
@@ -59,18 +55,11 @@ export default {
 </script>
 
 <style scoped>
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  top: -10px;
-}
-
-ul li{
+li {
   display: inline;
   padding: 0px 4px 0px 4px;
   margin: 4px 4px 4px 4px;
   cursor: pointer;
-  color: #2979ff;
   white-space: pre-wrap;
   word-wrap:break-word;
 
@@ -80,19 +69,16 @@ ul li{
   border-style: dashed;
 }
 
-ul li strong {
+li * {
   color: #2979ff;
 }
 
-ul{
-  list-style-type: disc;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-  padding: 1em 20em 1em 20em;
-}
 .selected{
   border-color: red;
+}
+
+.li-type strong{
+  cursor: default;
+  color: #cc4b63;
 }
 </style>

@@ -72,6 +72,20 @@ h2:hover {
   border-style: dashed;
   border-color: red;
 }
+
+.til-content :deep(ul) {
+  list-style-type: disc;
+  list-style-position: inside;
+  display: block;
+  /*float:left;*/
+}
+
+.til-content :deep(li) {
+  display: list-item;
+  color: #0a0a0a;
+  cursor: default;
+}
+
 details > summary {
   list-style: none;
 }

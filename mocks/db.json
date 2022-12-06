@@ -48,7 +48,7 @@
       {"user":"biocarl",
       "result":
       [
-        {"date":"28.09.2022","category":"python","title":"Spin-Up local server for serving files", "content":"<ul>\n<li>Example for <code>reverse()</code> because this mutates original array</li>\n</ul>\n\n<pre><code class=\\\"language-javascript\\\">[...numbers].reverse()\n</code></pre>\n\n<ul>\n<li><code>...</code> is the <a href=\\\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax\\\">spread syntax</a> where you expand a list into arguments</li>\n</ul>\n"},
+        {"date":"28.09.2022","category":"python","title":"Spin-Up local server for serving files", "content":"<ul>\n<li>Example for <code>reverse()</code> because this mutates original array</li>\n</ul>\n\n<pre><code class=\\\"language-javascript\\\">[...numbers].reverse()\n</code></pre>\n\n<ul>\n<li><code>...</code> is the <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax\">spread syntax</a> where you expand a list into arguments</li>\n</ul>\n"},
         {"date":"13.04.2022","category":"python","title":"How to mock in python","content":"<ul>\n<li>A superset of Javascript</li>\n<li>Extends the language by a static type system</li>\n</ul>\n"}
    ]},
       {"user":"maryarm",

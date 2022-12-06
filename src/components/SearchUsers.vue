@@ -1,13 +1,9 @@
 <template>
-  <div class="container has-text-centered">
-    <h1>Users</h1>
-    <ul>
+  <li class="li-type"><strong>Users</strong></li>
       <li v-for="user in users" key="user.user"
           @click="updateUserSelection(user.user)"
           :class="{selected: this.isSelected(user.user)}">
         {{user.user}}<strong>{{"(" + user["til-count"] +")"}}</strong></li>
-    </ul>
-  </div>
 </template>
 
 <script>
@@ -64,12 +60,12 @@ h1 {
   font-size: 2.6rem;
   top: -10px;
 }
-ul li{
+
+li {
   display: inline;
   padding: 0px 4px 0px 4px;
   margin: 4px 4px 4px 4px;
   cursor: pointer;
-  color: #2979ff;
   white-space: pre-wrap;
   word-wrap:break-word;
 
@@ -79,9 +75,10 @@ ul li{
   border-style: dashed;
 }
 
-ul li strong {
+li *{
   color: #2979ff;
 }
+
 
 ul{
   list-style-type: disc;
@@ -91,7 +88,13 @@ ul{
   justify-content: center;
   padding: 1em 20em 1em 20em;
 }
+
 .selected{
   border-color: red;
+}
+
+.li-type strong{
+  cursor: default;
+  color: #cc4b63;
 }
 </style>

@@ -1,13 +1,9 @@
 <template>
-  <div class="container has-text-centered">
-    <h1>Categories</h1>
-    <ul>
+  <li class="li-type"><strong>Categories</strong></li>
       <li v-for="(category,index) in categories" key="index"
           @click="updateCategorySelection(index)"
           :class="{selected: index === currentSelection}">
         {{category.category}}<strong>{{" (" + category.count +")" }}</strong></li>
-    </ul>
-  </div>
 </template>
 
 <script>
@@ -63,12 +59,11 @@ h1 {
   top: -10px;
 }
 
-ul li{
+li {
   display: inline;
   padding: 0px 4px 0px 4px;
   margin: 4px 4px 4px 4px;
   cursor: pointer;
-  color: #2979ff;
   white-space: pre-wrap;
   word-wrap:break-word;
 
@@ -78,7 +73,7 @@ ul li{
   border-style: dashed;
 }
 
-ul li strong {
+li * {
   color: #2979ff;
 }
 
@@ -92,5 +87,9 @@ ul{
 }
 .selected{
   border-color: red;
+}
+.li-type strong{
+  cursor: default;
+  color: #cc4b63;
 }
 </style>
