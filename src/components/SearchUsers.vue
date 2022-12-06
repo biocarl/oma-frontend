@@ -38,7 +38,7 @@ export default {
     fetchUsers(){
       oma.getUsers(this.queryParams)
           .then(response => {
-            this.users = response.data;
+            this.users = response.data.result;
           }).catch(e => {
         console.log(e);
       });

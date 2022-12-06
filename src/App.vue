@@ -6,9 +6,7 @@ import { RouterLink, RouterView } from 'vue-router'
   <header>
     <section class="section">
       <div class="container has-text-centered">
-        <container>
           <img width="300" height="300" alt="Oma logo" src="@/assets/oma.png"/>
-        </container>
         <div style="font-weight: bold; font-size: 2em;margin-left: 2em;font-family: 'Latin Modern Roman', serif">
           <span>O</span>
           <span style="font-size: 0.5em; color: #c5cae9">pen</span>

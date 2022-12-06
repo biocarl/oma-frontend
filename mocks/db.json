@@ -1,5 +1,5 @@
 {
-  "categories": [
+  "categories": { "categories": [
     {"category":"java","count":169},
     {"category":"uncategorized","count":68},
     {"category":"sql","count":42},
@@ -31,32 +31,34 @@
     {"category":"perl","count": 13},
     {"category":"networking","count": 12},
     {"category":"bash","count":10}
-  ],
-  "users" : [
-    {"user":"DiesDasJenes","til-count":3,"error-count":0},
-    {"user":"Kokonut133","til-count":11,"error-count":2},
-    {"user":"MartinReiss","til-count":3,"error-count":0},
-    {"user":"biocarl","til-count":563,"error-count":0},
-    {"user":"danielSbastos","til-count":1,"error-count":0},
-    {"user":"maryarm","til-count":37,"error-count":0},
-    {"user":"sroidl","til-count":0,"error-count":1},
-    {"user":"tmateen","til-count":0,"error-count":0},
-    {"user":"zzzz","til-count":2,"error-count":0}
-  ],
+  ]
+  },
+  "users" : {
+    "result" :  [
+      {"user":"DiesDasJenes","til-count":3,"error-count":0},
+      {"user":"Kokonut133","til-count":11,"error-count":2},
+      {"user":"MartinReiss","til-count":3,"error-count":0},
+      {"user":"biocarl","til-count":563,"error-count":0},
+      {"user":"danielSbastos","til-count":1,"error-count":0},
+      {"user":"maryarm","til-count":37,"error-count":0},
+      {"user":"sroidl","til-count":0,"error-count":1},
+      {"user":"tmateen","til-count":0,"error-count":0},
+      {"user":"zzzz","til-count":2,"error-count":0}
+    ]},
   "tils" :
-    [
-      {"user":"biocarl",
+  [
+    {"user":"biocarl",
       "result":
       [
         {"date":"28.09.2022","category":"python","title":"Spin-Up local server for serving files", "content":"<ul>\n<li>Example for <code>reverse()</code> because this mutates original array</li>\n</ul>\n\n<pre><code class=\\\"language-javascript\\\">[...numbers].reverse()\n</code></pre>\n\n<ul>\n<li><code>...</code> is the <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax\">spread syntax</a> where you expand a list into arguments</li>\n</ul>\n"},
         {"date":"13.04.2022","category":"python","title":"How to mock in python","content":"<ul>\n<li>A superset of Javascript</li>\n<li>Extends the language by a static type system</li>\n</ul>\n"}
-   ]},
-      {"user":"maryarm",
-        "result":
-        [
-          {"date":"28.09.2022","category":"python","title":"How to use iterators?","content":"Content"},
-          {"date":"13.04.2022","category":"python","title":"How to use the spreading operator?","content":"Content2"}
-        ]}
-    ],
+      ]},
+    {"user":"maryarm",
+      "result":
+      [
+        {"date":"28.09.2022","category":"python","title":"How to use iterators?","content":"Content"},
+        {"date":"13.04.2022","category":"python","title":"How to use the spreading operator?","content":"Content2"}
+      ]}
+  ],
   "health": { "status": "healthy" }
 }

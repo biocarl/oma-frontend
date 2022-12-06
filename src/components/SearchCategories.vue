@@ -36,7 +36,7 @@ export default {
     fetchCategories(){
       oma.getCategories(this.queryParams)
           .then(response => {
-            this.categories = response.data;
+            this.categories = response.data.categories;
           }).catch(e => {
         console.log(e);
       });

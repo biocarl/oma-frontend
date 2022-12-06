@@ -1,5 +1,6 @@
 {
   "/api/tils?category=*&users=*&start-date=*&end-date=*" : "/tils",
   "/api/categories//*": "/categories",
-  "/api/categories/*": "/categories?q=java"
+  "/api/categories/*": "/categories?q=java",
+  "/api/statistics/users": "/results"
 }
