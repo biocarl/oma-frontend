@@ -1,5 +1,6 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+// import { RouterLink, RouterView } from 'vue-router'
+import SearchView from '@/views/SearchView.vue'
 </script>
 
 <template>
@@ -20,7 +21,8 @@ import { RouterLink, RouterView } from 'vue-router'
       </div>
     </section>
   </header>
-  <RouterView />
+<!--  <RouterView />-->
+  <SearchView></SearchView>
 </template>
 <style>
 .section{
