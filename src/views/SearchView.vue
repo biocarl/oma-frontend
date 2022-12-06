@@ -1,4 +1,4 @@
-<template>
+<template v-if="query">
   <main>
     <div class="container has-text-centered">
     </div>
@@ -56,8 +56,7 @@ export default {
     query: {
       handler (newQuery, oldQuery){
         if(newQuery.category !== ""){
-          console.log("Category: " + newQuery.category + "| Users: " + newQuery.users);
-          oma.getTils(this.query)
+          oma.getTils(newQuery)
               .then(response => {
                 this.tils = response.data.result;
               }).catch(e => {

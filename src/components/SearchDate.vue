@@ -14,6 +14,7 @@ export default {
       endDate: new Date()
     }
   },
+  emits: ["date-update"],
   methods: {
     updateDateSelection(index){
       if(index === this.currentSelection){

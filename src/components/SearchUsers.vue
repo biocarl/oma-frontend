@@ -23,6 +23,7 @@ export default {
   created() {
     this.fetchUsers();
   },
+  emits: ["users-update"],
   methods: {
     isSelected(user){
       return this.selectedUsers.includes(user);

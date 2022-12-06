@@ -23,6 +23,7 @@ export default {
   created() {
     this.fetchCategories();
   },
+  emits: ["category-update"],
   methods: {
     updateCategorySelection(index){
       if(index === this.currentSelection){
