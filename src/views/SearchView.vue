@@ -14,7 +14,7 @@
       </p>
       <div class="panel-block">
         <p class="control has-icons-left">
-          <input class="input is-link" type="text" placeholder="Search" v-model="this.query.category">
+          <input class="input is-link" type="text" placeholder="Search" v-model="query.category">
           <span class="icon is-left">
         <i class="fas fa-search" aria-hidden="true"></i>
       </span>
@@ -23,14 +23,14 @@
 
       <ul>
           <SearchCategories
-              :queryParams="this.query"
+              :queryParams="query"
               @category-update="(category) => this.query.category = category" />
           <SearchUsers
-              :queryParams="this.query"
+              :queryParams="query"
               @users-update="(users) => this.query.users = users" />
           <SearchDate @date-update="({startDate, endDate}) => this.query = {...this.query, 'start-date' : startDate,'end-date': endDate}" />
       </ul>
-      <SearchResult :queryParams="this.query" :tils="this.tils" ></SearchResult>
+      <SearchResult :queryParams="query" :tils="tils" ></SearchResult>
     </article>
   </main>
 </template>
