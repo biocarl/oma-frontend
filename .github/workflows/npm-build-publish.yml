@@ -31,3 +31,4 @@ jobs:
       with:
         artifacts: "release.tar.gz,foo/*.txt"
         bodyFile: "README.md"
+        allowUpdates: true
