@@ -59,7 +59,7 @@ export default {
           console.log("Category: " + newQuery.category + "| Users: " + newQuery.users);
           oma.getTils(this.query)
               .then(response => {
-                this.tils = response.data;
+                this.tils = response.data.result;
               }).catch(e => {
             console.log(e);
           });

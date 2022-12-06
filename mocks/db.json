@@ -46,7 +46,7 @@
       {"user":"zzzz","til-count":2,"error-count":0}
     ]},
   "tils" :
-  [
+  {"result": [
     {"user":"biocarl",
       "result":
       [
@@ -59,6 +59,7 @@
         {"date":"28.09.2022","category":"python","title":"How to use iterators?","content":"Content"},
         {"date":"13.04.2022","category":"python","title":"How to use the spreading operator?","content":"Content2"}
       ]}
-  ],
+  ]
+  },
   "health": { "status": "healthy" }
 }
