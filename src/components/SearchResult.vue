@@ -18,7 +18,7 @@ defineProps({
         <div v-for="(tilsUser) in tils">
           <div v-for="(til) in tilsUser.result" class="panel-block">
               <details >
-                  <summary class="columns is-vcentered">
+                  <summary class="columns is-vcentered" >
                     <ul class="column is-narrow">
                       <li class="px-1">
                         <span> <i class="fas fa-book" aria-hidden="true"></i> </span>
@@ -45,16 +45,9 @@ defineProps({
 </template>
 
 <style scoped>
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  top: -10px;
-}
-
 h2 {
   font-weight: 500;
   font-size: 2.0rem;
-  top: -10px;
   cursor: pointer;
 }
 h2:hover {
@@ -71,19 +64,37 @@ h2:hover {
   /*border-color: transparent;*/
   border-style: dashed;
   border-color: red;
+  line-height: 1.5;
+  font-size: 1em;
 }
 
-.til-content :deep(ul) {
+/* Styling lists */
+:deep(.til-content) ul {
   list-style-type: disc;
   list-style-position: inside;
   display: block;
-  /*float:left;*/
 }
 
-.til-content :deep(li) {
+:deep(.til-content) ul li {
   display: list-item;
   color: #0a0a0a;
   cursor: default;
+}
+
+:deep(.til-content) ul > li > ul{
+  list-style-type: circle;
+}
+
+:deep(.til-content) ul > li > ul > li{
+  color: #0a0a0a;
+}
+
+:deep(.til-content) ul > li > ul > li > ul{
+  list-style-type: square;
+}
+
+:deep(.til-content) ul > li > ul > li > ul > li{
+  color: #0a0a0a;
 }
 
 details > summary {
@@ -91,5 +102,11 @@ details > summary {
 }
 details > summary::-webkit-details-marker {
   display: none;
+}
+details{
+  width: 100%;
+}
+summary{
+  border-bottom: 1px solid gray
 }
 </style>
