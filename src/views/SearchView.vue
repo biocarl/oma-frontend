@@ -24,11 +24,11 @@
       <ul>
           <SearchCategories
               :queryParams="query"
-              @category-update="(category) => this.query.category = category" />
+              @category-update="(category) => query.category = category" />
           <SearchUsers
               :queryParams="query"
-              @users-update="(users) => this.query.users = users" />
-          <SearchDate @date-update="({startDate, endDate}) => this.query = {...this.query, 'start-date' : startDate,'end-date': endDate}" />
+              @users-update="(users) => query.users = users" />
+          <SearchDate @date-update="({startDate, endDate}) => query = {...query, 'start-date' : startDate,'end-date': endDate}" />
       </ul>
       <SearchResult :queryParams="query" :tils="tils" ></SearchResult>
     </article>
