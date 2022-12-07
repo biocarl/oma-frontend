@@ -1,6 +1,9 @@
 <template>
-  <li class="li-type"><strong>Time Range</strong></li>
-      <li v-for="(date,index) in startDates" key="index"
+  <li class="li-type"  @click="isCollapsed = !isCollapsed" >
+    <strong>Time Range</strong>
+    <i v-if="isCollapsed" class="fas fa-forward filter-icon" aria-hidden="true"></i>
+  </li>
+      <li v-if="!isCollapsed" v-for="(date,index) in startDates" key="index"
           @click="updateDateSelection(index)"
           :class="{selected: index === currentSelection}">
         {{date.name}}</li>
@@ -11,7 +14,8 @@ export default {
   data(){
     return {
       currentSelection: -1,
-      endDate: new Date()
+      endDate: new Date(),
+      isCollapsed: false
     }
   },
   emits: ["date-update"],
@@ -21,6 +25,7 @@ export default {
         this.currentSelection = -1;
         this.$emit('date-update',{startDate: this.dateToString(new Date("2000-01-01")), endDate:  this.dateToString(this.endDate)});
       }else{
+        this.isCollapsed = !this.isCollapsed;
         this.currentSelection = index;
         this.$emit('date-update',{startDate: this.dateToString(this.startDates[this.currentSelection].startDate), endDate:  this.dateToString(this.endDate)});
       }
@@ -55,31 +60,7 @@ export default {
 }
 </script>
 
+
 <style scoped>
-li {
-  display: inline;
-  padding: 0px 4px 0px 4px;
-  margin: 4px 4px 4px 4px;
-  cursor: pointer;
-  white-space: pre-wrap;
-  word-wrap:break-word;
-
-  /*Selected style*/
-  border-radius: 7px;
-  border-color: transparent;
-  border-style: dashed;
-}
-
-li * {
-  color: #2979ff;
-}
-
-.selected{
-  border-color: red;
-}
-
-.li-type strong{
-  cursor: default;
-  color: #cc4b63;
-}
+@import "@/assets/search-filters.css";
 </style>

@@ -1,6 +1,9 @@
 <template>
-  <li class="li-type"><strong>Users</strong></li>
-      <li v-for="user in users" key="user.user"
+  <li class="li-type"   @click="isCollapsed = !isCollapsed" >
+    <strong>Users</strong>
+    <i v-if="isCollapsed" class="fas fa-forward filter-icon" aria-hidden="true"></i>
+  </li>
+      <li v-if="!isCollapsed"  v-for="user in users" key="user.user"
           @click="updateUserSelection(user.user)"
           :class="{selected: this.isSelected(user.user)}">
         {{user.user}}<strong>{{"(" + user["til-count"] +")"}}</strong></li>
@@ -17,7 +20,8 @@ export default {
   data(){
     return {
       selectedUsers : [],
-      users: []
+      users: [],
+      isCollapsed: false
     }
   },
   created() {
@@ -33,6 +37,10 @@ export default {
         this.selectedUsers = this.selectedUsers.filter(e => e !== user)
       }else{
         this.selectedUsers.push(user);
+        this.isCollapsed = !this.isCollapsed;
+      }
+      if(this.selectedUsers.length === 0){
+        this.isCollapsed = !this.isCollapsed;
       }
       this.$emit('users-update',this.selectedUsers);
     },
@@ -56,46 +64,5 @@ export default {
 </script>
 
 <style scoped>
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  top: -10px;
-}
-
-li {
-  display: inline;
-  padding: 0px 4px 0px 4px;
-  margin: 4px 4px 4px 4px;
-  cursor: pointer;
-  white-space: pre-wrap;
-  word-wrap:break-word;
-
-  /*Selected style*/
-  border-radius: 7px;
-  border-color: transparent;
-  border-style: dashed;
-}
-
-li *{
-  color: #2979ff;
-}
-
-
-ul{
-  list-style-type: disc;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-  padding: 1em 20em 1em 20em;
-}
-
-.selected{
-  border-color: red;
-}
-
-.li-type strong{
-  cursor: default;
-  color: #cc4b63;
-}
+@import "@/assets/search-filters.css";
 </style>

@@ -20,7 +20,6 @@
       </span>
         </p>
       </div>
-
       <ul>
           <SearchCategories
               :queryParams="query"
