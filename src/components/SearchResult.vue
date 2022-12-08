@@ -1,14 +1,25 @@
-<script setup>
-defineProps({
-  queryParams: {
-    type: Object,
-    required: true
+<script>
+export default {
+  props: {
+    queryParams: {
+      type: Object,
+      required: true
+    },
+    tils: {
+      type: Array,
+      required: true
+    }
   },
-  tils: {
-    type: Array,
-    required: true
+  methods: {
+    generateTagColorPerUser(userString) {
+      // From: https://stackoverflow.com/a/66494926 by Aslam
+      let stringUniqueHash = [...userString].reduce((acc, char) => {
+        return char.charCodeAt(0) + ((acc << 5) - acc);
+      }, 0);
+      return `hsl(${stringUniqueHash % 360}, 95%, 35%)`;
+    }
   }
-})
+}
 </script>
 
 <template>
@@ -20,15 +31,18 @@ defineProps({
               <details >
                   <summary class="columns is-vcentered" >
                     <ul class="column is-narrow">
-                      <li class="px-1">
-                        <span> <i class="fas fa-book" aria-hidden="true"></i> </span>
+                      <div class="px-1">
+                        <span>📅</span>
                         <strong class="px-3">{{ til.date }}</strong>
-                      </li>
-                      <li class="pl-4 pt-2">
+                        <br>
+                      </div>
+                      <div class="ml-0 pl-0 pt-3">
+                        <span class="tag is-info is-rounded px-2 mx-2" :style="{'background-color': generateTagColorPerUser(tilsUser.user)}">
+                          <i class="fas fa-user pr-2" aria-hidden="true"></i>
+                          {{tilsUser.user }}
+                        </span>
                         <span class="tag is-link is-rounded px-2 mx-2">{{ til.category }}</span>
-                        <br/>
-                        <span class="tag is-info is-rounded px-2 mx-2">{{ tilsUser.user }}</span>
-                      </li>
+                      </div>
                     </ul>
                     <h2 class="column">{{ til.title}}</h2>
                   </summary>
