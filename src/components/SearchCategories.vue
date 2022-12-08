@@ -52,7 +52,8 @@ export default {
     queryParams:{
       handler: function (){
         this.fetchCategories();
-      }
+      },
+      deep: true
     }
   }
 }

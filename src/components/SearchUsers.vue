@@ -57,7 +57,8 @@ export default {
     queryParams:{
       handler: function (){
         this.fetchUsers();
-      }
+      },
+      deep: true
     }
   }
 }
