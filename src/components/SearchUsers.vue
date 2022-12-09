@@ -5,12 +5,14 @@
   </li>
       <li v-if="!isCollapsed"  v-for="user in users" key="user.user"
           @click="updateUserSelection(user.user)"
+          :style="{'background-color': generateTagUniqueColor(user.user,0.3)}"
           :class="{selected: this.isSelected(user.user)}">
         {{user.user}}<strong>{{"(" + user["til-count"] +")"}}</strong></li>
 </template>
 
 <script>
 import oma from "../services/OmaService";
+import {generateTagUniqueColor} from "./helpers.js";
 export default {
   props:{
     queryParams: {
@@ -37,10 +39,10 @@ export default {
         this.selectedUsers = this.selectedUsers.filter(e => e !== user)
       }else{
         this.selectedUsers.push(user);
-        this.isCollapsed = !this.isCollapsed;
+        // this.isCollapsed = !this.isCollapsed;
       }
       if(this.selectedUsers.length === 0){
-        this.isCollapsed = !this.isCollapsed;
+        // this.isCollapsed = !this.isCollapsed;
       }
       this.$emit('users-update',this.selectedUsers);
     },
@@ -51,7 +53,8 @@ export default {
           }).catch(e => {
         console.log(e);
       });
-    }
+    },
+    generateTagUniqueColor: generateTagUniqueColor
   },
   watch:{
     queryParams:{

@@ -5,6 +5,7 @@
   </li>
       <li v-if="!isCollapsed" v-for="(date,index) in startDates" key="index"
           @click="updateDateSelection(index)"
+          style="background-color: hsla(212, 42%, 51%,0.4)"
           :class="{selected: index === currentSelection}">
         {{date.name}}</li>
 </template>
@@ -25,7 +26,7 @@ export default {
         this.currentSelection = -1;
         this.$emit('date-update',{startDate: this.dateToString(new Date("2000-01-01")), endDate:  this.dateToString(this.endDate)});
       }else{
-        this.isCollapsed = !this.isCollapsed;
+        // this.isCollapsed = !this.isCollapsed;
         this.currentSelection = index;
         this.$emit('date-update',{startDate: this.dateToString(this.startDates[this.currentSelection].startDate), endDate:  this.dateToString(this.endDate)});
       }

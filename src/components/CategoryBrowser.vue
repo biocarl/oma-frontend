@@ -2,7 +2,7 @@
   <li
       @click="clickHandler"
       :class="{selected: this.node.path === this.currentPathSelection, hasChildren: node.children}"
-      :style="{'background-color': 'hsl(40,100%,'+ (50+depth*20) +'%)'}"  >
+      :style="{'background-color': 'hsla(40,100%,'+ (50+depth*20) +'%,0.55)'}"  >
     {{node.category}} <strong>{{" (" + node.count +")" }}</strong>
   </li>
 

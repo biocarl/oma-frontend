@@ -24,3 +24,11 @@ export function inflateForest (categories) {
     }
     return sorted;
 }
+
+export function generateTagUniqueColor(userString, alpha) {
+    // From: https://stackoverflow.com/a/66494926 by Aslam
+    let stringUniqueHash = [...userString].reduce((acc, char) => {
+        return char.charCodeAt(0) + ((acc << 5) - acc);
+    }, 0);
+    return `hsla(${stringUniqueHash % 360}, 95%, 35%,${alpha})`;
+}

@@ -1,4 +1,5 @@
 <script>
+import {generateTagUniqueColor} from "./helpers.js";
 export default {
   props: {
     queryParams: {
@@ -11,13 +12,7 @@ export default {
     }
   },
   methods: {
-    generateTagUniqueColor(userString) {
-      // From: https://stackoverflow.com/a/66494926 by Aslam
-      let stringUniqueHash = [...userString].reduce((acc, char) => {
-        return char.charCodeAt(0) + ((acc << 5) - acc);
-      }, 0);
-      return `hsl(${stringUniqueHash % 360}, 95%, 35%)`;
-    }
+    generateTagUniqueColor: generateTagUniqueColor
   }
 }
 </script>
@@ -38,11 +33,11 @@ export default {
                       </div>
                       <div class="ml-0 pl-0 pt-3">
                         <div class="tags">
-                          <span class="tag is-info is-rounded px-2 mx-2" :style="{'background-color': generateTagUniqueColor(tilsUser.user)}">
+                          <span class="tag is-info is-rounded px-2 mx-2" :style="{'background-color': generateTagUniqueColor(tilsUser.user,0.8)}">
                             <i class="fas fa-user pr-2" aria-hidden="true"></i>
                             {{tilsUser.user }}
                           </span>
-                          <span v-for="cat in til.category.split(',')" :style="{'background-color': generateTagUniqueColor(cat)}" class="tag is-link is-rounded px-2 mx-2">{{ cat }}</span>
+                          <span v-for="cat in til.category.split(',')" :style="{'background-color': generateTagUniqueColor(cat,0.8)}" class="tag is-link is-rounded px-2 mx-2">{{ cat }}</span>
                         </div>
                       </div>
                     </ul>
