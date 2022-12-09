@@ -1,6 +1,7 @@
 @import './base.css';
 @import 'bulma/css/bulma.css';
-
+@import './highlight/highlight-default.min.css';
+@import './highlight/rainbow.css';
 
 .navbar {
     background-color: transparent;

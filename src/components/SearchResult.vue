@@ -1,5 +1,6 @@
 <script>
 import {generateTagUniqueColor} from "./helpers.js";
+import hljs from 'highlight.js';
 export default {
   props: {
     queryParams: {
@@ -12,7 +13,18 @@ export default {
     }
   },
   methods: {
-    generateTagUniqueColor: generateTagUniqueColor
+    generateTagUniqueColor: generateTagUniqueColor,
+    highlightCode(htmlString){
+      let div = document.createElement('div');
+      div.innerHTML = htmlString.trim();
+      // console.log(div.querySelectorAll("h1"));
+      div.querySelectorAll("pre code").forEach(
+          e => {
+             hljs.highlightElement(e);
+          }
+      );
+      return div.innerHTML;
+    }
   }
 }
 </script>
@@ -28,7 +40,7 @@ export default {
                     <ul class="column is-2">
                       <div class="px-1">
                         <span>📅</span>
-                        <strong class="px-3">{{ til.date }}</strong>
+                        <strong class="px-2">{{ til.date }}</strong>
                         <br>
                       </div>
                       <div class="ml-0 pl-0 pt-3">
@@ -43,7 +55,7 @@ export default {
                     </ul>
                     <h2 class="column">{{ til.title}}</h2>
                   </summary>
-                <div class="til-content p-3 ml-5" v-html="til.content"></div>
+                <div class="til-content" v-html="highlightCode(til.content)"></div>
               </details >
           </div>
         </div>
@@ -65,14 +77,10 @@ h2:hover {
 
 .search-result {
   /*background-color: #ffecb8;*/
-
 }
 
 .til-content{
   border-radius: 7px;
-  /*border-color: transparent;*/
-  border-style: dashed;
-  border-color: red;
   line-height: 1.5;
   font-size: 1em;
 }
