@@ -11,7 +11,7 @@ export default {
     }
   },
   methods: {
-    generateTagColorPerUser(userString) {
+    generateTagUniqueColor(userString) {
       // From: https://stackoverflow.com/a/66494926 by Aslam
       let stringUniqueHash = [...userString].reduce((acc, char) => {
         return char.charCodeAt(0) + ((acc << 5) - acc);
@@ -30,18 +30,20 @@ export default {
           <div v-for="(til) in tilsUser.result" class="panel-block">
               <details >
                   <summary class="columns is-vcentered" >
-                    <ul class="column is-narrow">
+                    <ul class="column is-2">
                       <div class="px-1">
                         <span>📅</span>
                         <strong class="px-3">{{ til.date }}</strong>
                         <br>
                       </div>
                       <div class="ml-0 pl-0 pt-3">
-                        <span class="tag is-info is-rounded px-2 mx-2" :style="{'background-color': generateTagColorPerUser(tilsUser.user)}">
-                          <i class="fas fa-user pr-2" aria-hidden="true"></i>
-                          {{tilsUser.user }}
-                        </span>
-                        <span class="tag is-link is-rounded px-2 mx-2">{{ til.category }}</span>
+                        <div class="tags">
+                          <span class="tag is-info is-rounded px-2 mx-2" :style="{'background-color': generateTagUniqueColor(tilsUser.user)}">
+                            <i class="fas fa-user pr-2" aria-hidden="true"></i>
+                            {{tilsUser.user }}
+                          </span>
+                          <span v-for="cat in til.category.split(',')" :style="{'background-color': generateTagUniqueColor(cat)}" class="tag is-link is-rounded px-2 mx-2">{{ cat }}</span>
+                        </div>
                       </div>
                     </ul>
                     <h2 class="column">{{ til.title}}</h2>
@@ -51,8 +53,6 @@ export default {
           </div>
         </div>
       </div>
-
-
     <div>
     </div>
   </div>
