@@ -26,6 +26,15 @@ export function inflateForest (categories) {
 }
 
 export function generateTagUniqueColor(userString, alpha) {
+
+    //for users who don't like their color and can't choose just one color
+    if ( userString == "maryarm"){
+      const d = new Date();
+      return [
+          `hsl(174, 71%, 47%, ${alpha})`,
+          `hsl(185, 100%, 40%, ${alpha})`,
+          `hsl(195, 100%, 40%, ${alpha})`][d.getDay() % 3]
+    }
     // From: https://stackoverflow.com/a/66494926 by Aslam
     let stringUniqueHash = [...userString].reduce((acc, char) => {
         return char.charCodeAt(0) + ((acc << 5) - acc);
