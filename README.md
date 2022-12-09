@@ -13,17 +13,6 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 # TODO
 
-- WHERE YOU WERE
-- Try to debug why I get a crash when doing preview but not in dev
-- if the approach from below works write a TIL
-- https://stackoverflow.com/questions/72017405/typeerror-cant-convert-undefined-to-object-only-after-vite-build-before-wi
-
-- `this` in binding expressions causes errors
-  - https://rollupjs.org/guide/en/#error-this-is-undefined
-  - 
-
-
-
 ## Project Setup
 
 ```sh

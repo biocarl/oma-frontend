@@ -31,7 +31,7 @@ ul{
   padding: 1em 20em 1em 20em;
 }
 .selected{
-  border-color: red;
+  border-color: red !important;
 }
 
 .li-type{

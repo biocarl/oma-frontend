@@ -1,17 +1,24 @@
 <template>
-  <li class="li-type"   @click="isCollapsed = !isCollapsed" >
+  <li class="li-type" @click="isCollapsed = !isCollapsed" >
     <strong>Categories</strong>
     <i v-if="isCollapsed" class="fas fa-forward filter-icon" aria-hidden="true"></i>
   </li>
-      <li v-if="!isCollapsed" v-for="(category,index) in categories" key="index"
-          @click="updateCategorySelection(index)"
-          :class="{selected: index === currentSelection}">
-        {{category.category}}<strong>{{" (" + category.count +")" }}</strong></li>
+  <CategoryBrowser v-if="!isCollapsed"
+                   v-for="(category,index) in categoryForest"
+                   @category-clicked="updateCategorySelection"
+                   :key="index"
+                   :node="category"
+                   :currentPathSelection="currentPathSelection">
+  </CategoryBrowser>
 </template>
 
 <script>
 import oma from "../services/OmaService";
+import {inflateForest} from "./helpers.js";
+import CategoryBrowser from "@/components/CategoryBrowser.vue";
+
 export default {
+  components: {CategoryBrowser},
   props:{
     queryParams: {
       type: Object
@@ -19,9 +26,16 @@ export default {
   },
   data(){
     return {
-      currentSelection: -1,
+      currentPathSelection: "",
       categories: [],
       isCollapsed: false
+    }
+  },
+  computed:{
+    categoryForest(){
+      const categoryForest = inflateForest(this.categories);
+      categoryForest.sort((a, b) => (a.count < b.count) ? 1 : -1);
+      return categoryForest;
     }
   },
   created() {
@@ -29,14 +43,14 @@ export default {
   },
   emits: ["category-update"],
   methods: {
-    updateCategorySelection(index){
-      if(index === this.currentSelection){
-        this.currentSelection = -1;
+    updateCategorySelection(nodePath){
+      if(nodePath === this.currentPathSelection){
         this.$emit('category-update',"");
+        this.currentPathSelection= "";
       }else{
-        this.currentSelection = index;
-        this.$emit('category-update',this.categories[this.currentSelection].category);
-        this.isCollapsed = !this.isCollapsed;
+        this.$emit('category-update', nodePath);
+        this.currentPathSelection= nodePath;
+        // this.isCollapsed = !this.isCollapsed;
       }
     },
     fetchCategories(){
